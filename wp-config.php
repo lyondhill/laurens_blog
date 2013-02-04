@@ -16,19 +16,32 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wp-db');
+//define('DB_NAME', 'wp-db');
 
 /** MySQL database username */
-define('DB_USER', 'alycia');
+//define('DB_USER', 'alycia');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'aY5IhTB6');
+// define('DB_PASSWORD', 'aY5IhTB6');
 
 /** MySQL hostname */
-define('DB_HOST', '127.0.0.1');
+// define('DB_HOST', '127.0.0.1');
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+// define('DB_CHARSET', 'utf8');
+
+if (isset($_SERVER['PLATFORM']) && $_SERVER['PLATFORM'] == 'PAGODABOX') {
+    define('DB_NAME', $_SERVER['DB1_NAME']);
+    define('DB_USER', $_SERVER['DB1_USER']);
+    define('DB_PASSWORD', $_SERVER['DB1_PASS']);
+    define ('DB_HOST', $_SERVER['DB1_HOST'] . ':' . $_SERVER['DB1_PORT']);
+}
+else {
+    define('DB_NAME', 'yourlocaldb');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', 'root');
+    define('DB_HOST', 'localhost');
+}
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
